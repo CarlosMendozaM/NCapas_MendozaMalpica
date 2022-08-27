@@ -33,6 +33,7 @@ namespace Financiera.Data
                                 cliente.Referencia = lector[4].ToString();
                                 cliente.IdTipoCliente = int.Parse(lector[5].ToString());
                                 cliente.IdTipoDocumento = int.Parse(lector[6].ToString());
+                                cliente.NumeroDocumento = lector[7].ToString();
 
                                 listado.Add(cliente);
                             }

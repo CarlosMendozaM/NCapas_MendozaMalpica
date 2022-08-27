@@ -26,7 +26,21 @@ namespace Financiera.AppWin
 
         private void cargarDatos()
         {
-            dgvListado.DataSource = ClienteBL.Listar();
+            var listado = ClienteBL.Listar();
+            foreach (var cliente in listado)
+            {
+                dgvListado.Rows.Add(cliente.ID,cliente.NombreCompleto,cliente.Direccion);
+            }
+        }
+
+        private void nuevoRegistro(object sender, EventArgs e)
+        {
+            var nuevoCliente = new Cliente();
+            var frm = new frmClienteEdit(nuevoCliente);
+            if (frm.ShowDialog() == DialogResult.OK )
+            {
+
+            }
         }
     }
 }
