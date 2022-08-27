@@ -44,6 +44,7 @@
             this.txtNumeroDocumento = new System.Windows.Forms.TextBox();
             this.txtNombre = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.chkEstado = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // label2
@@ -132,18 +133,19 @@
             // btnGrabar
             // 
             this.btnGrabar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnGrabar.Location = new System.Drawing.Point(336, 295);
+            this.btnGrabar.Location = new System.Drawing.Point(433, 295);
             this.btnGrabar.Name = "btnGrabar";
             this.btnGrabar.Size = new System.Drawing.Size(75, 23);
             this.btnGrabar.TabIndex = 13;
             this.btnGrabar.Text = "Grabar";
             this.btnGrabar.UseVisualStyleBackColor = true;
+            this.btnGrabar.Click += new System.EventHandler(this.grabarDatos);
             // 
             // btnCancelar
             // 
             this.btnCancelar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCancelar.Location = new System.Drawing.Point(221, 295);
+            this.btnCancelar.Location = new System.Drawing.Point(318, 295);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(75, 23);
             this.btnCancelar.TabIndex = 14;
@@ -182,11 +184,22 @@
             this.label1.TabIndex = 17;
             this.label1.Text = "Nombres:";
             // 
+            // chkEstado
+            // 
+            this.chkEstado.AutoSize = true;
+            this.chkEstado.Location = new System.Drawing.Point(12, 299);
+            this.chkEstado.Name = "chkEstado";
+            this.chkEstado.Size = new System.Drawing.Size(217, 17);
+            this.chkEstado.TabIndex = 19;
+            this.chkEstado.Text = "¿Cliente disponible para procesar datos?";
+            this.chkEstado.UseVisualStyleBackColor = true;
+            // 
             // frmClienteEdit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(592, 340);
+            this.Controls.Add(this.chkEstado);
             this.Controls.Add(this.txtNombre);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtNumeroDocumento);
@@ -229,5 +242,6 @@
         private System.Windows.Forms.TextBox txtNumeroDocumento;
         private System.Windows.Forms.TextBox txtNombre;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.CheckBox chkEstado;
     }
 }
