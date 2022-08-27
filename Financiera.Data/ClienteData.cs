@@ -34,7 +34,7 @@ namespace Financiera.Data
                                 cliente.IdTipoCliente = int.Parse(lector[5].ToString());
                                 cliente.IdTipoDocumento = int.Parse(lector[6].ToString());
                                 cliente.NumeroDocumento = lector[7].ToString();
-
+                                cliente.Estado = lector[8].ToString() == "1" ? true : false;
                                 listado.Add(cliente);
                             }
                         }
@@ -68,6 +68,7 @@ namespace Financiera.Data
                             cliente.IdTipoCliente = int.Parse(lector[5].ToString());
                             cliente.IdTipoDocumento = int.Parse(lector[6].ToString());
                             cliente.NumeroDocumento = lector[7].ToString();
+                            cliente.Estado = lector[8].ToString() == "1" ? true : false;
                         }
                     }
                 }
@@ -107,7 +108,7 @@ namespace Financiera.Data
             {
                 conexion.Open();
                 var sql = "UPDATE Cliente SET Nombres = @Nombres, Apellidos = @Apellidos, " +                    "Direccion = @Direccion, Referencia = @Referencia, " +                    "IdTipoCliente = @IdTipoCliente, IdTipoDocumento = @IdTipoDocumento, " +                    "NumeroDocumento = @NumeroDocumento, Estado = @Estado " +
-                    "WHEREID = @id";
+                    "WHERE ID = @ID";
                 using (var comando = new SqlCommand(sql, conexion))
                 {
                     comando.Parameters.AddWithValue("@Nombres", cliente.Nombres);
@@ -125,9 +126,20 @@ namespace Financiera.Data
             return filasActualizadas > 0;
         }
 
-        public bool Eliminar(Cliente cliente)
+        public bool Eliminar(int id)
         {
-            return true;
+            int filasEliminadas = 0;
+            using (var conexion = new SqlConnection(cadenaconexion))
+            {
+                conexion.Open();
+                var sql = "DELETE FROM Cliente WHERE ID = @ID";
+                using (var comando = new SqlCommand(sql, conexion))
+                {
+                    comando.Parameters.AddWithValue("@ID", id);
+                    filasEliminadas = comando.ExecuteNonQuery();
+                }
+            }
+            return filasEliminadas > 0;
         }
     }
 }

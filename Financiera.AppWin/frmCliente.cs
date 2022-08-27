@@ -30,7 +30,8 @@ namespace Financiera.AppWin
             dgvListado.Rows.Clear();
             foreach (var cliente in listado)
             {
-                dgvListado.Rows.Add(cliente.ID,cliente.NombreCompleto,cliente.Direccion);
+                dgvListado.Rows.Add(cliente.ID,cliente.NombreCompleto,cliente.Direccion,cliente.Referencia,cliente.IdTipoCliente,
+                    cliente.IdTipoDocumento,cliente.NumeroDocumento,cliente.Estado);
             }
         }
 
@@ -50,7 +51,7 @@ namespace Financiera.AppWin
                 else
                 {
                     MessageBox.Show("El cliente no se ha podido registrar", "Financiera",
-                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
@@ -65,7 +66,45 @@ namespace Financiera.AppWin
                 var frm = new frmClienteEdit(clienteEditar);
                 if (frm.ShowDialog() == DialogResult.OK)
                 {
+                    var exito = ClienteBL.Actualizar(clienteEditar);
+                    if(exito)
+                    {
+                        MessageBox.Show("El cliente ha sido actualizado", "Financiera",
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        cargarDatos();
+                    }
+                    else
+                    {
+                        MessageBox.Show("No se ha podido completar la actualizacion", "Financiera",
+                            MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
+        }
 
+        private void eliminarRegistro(object sender, EventArgs e)
+        {
+            if (dgvListado.Rows.Count > 0)
+            {
+                int filaActual = dgvListado.CurrentRow.Index;
+                var idCliente = int.Parse(dgvListado.Rows[filaActual].Cells[0].Value.ToString());
+                var nombreCliente = dgvListado.Rows[filaActual].Cells[1].Value.ToString();
+                var rpta = MessageBox.Show("Realmente desea eliminar al cliente" + nombreCliente + " ?",
+                    "Financiera", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (rpta == DialogResult.Yes)
+                {
+                    var exito = ClienteBL.Eliminar(idCliente);
+                    if (exito)
+                    {
+                        MessageBox.Show("El cliente ha sido eliminado", "Financiera",
+                            MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        cargarDatos();
+                    }
+                    else
+                    {
+                        MessageBox.Show("No se ha podido eliminar al cliente", "Financiera",
+                           MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
             }
         }

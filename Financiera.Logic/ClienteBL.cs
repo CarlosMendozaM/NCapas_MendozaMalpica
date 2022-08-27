@@ -25,5 +25,18 @@ namespace Financiera.Logic
             var clienteData = new ClienteData();
             return clienteData.Insertar(cliente);
         }
+
+        public static bool Actualizar(Cliente cliente)
+        {
+            var clienteData = new ClienteData();
+            return clienteData.Actualizar(cliente);
+        }
+
+        public static bool Eliminar(int id)
+        {
+            var clienteData = new ClienteData();
+            return clienteData.Eliminar(id);
+        }
+
     }
 }
