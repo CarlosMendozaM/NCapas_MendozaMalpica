@@ -84,7 +84,9 @@ namespace Financiera.Data
                 conexion.Open();
                 var sql = "INSERT INTO [dbo].[Cliente] (Nombres, Apellidos, " +
                                 "Direccion, Referencia, IdTipoCliente, IdTipoDocumento, " +
-                                "NumeroDocumento, Estado)" +                          "VALUES(@Nombres, @Apellidos, @Direccion, @Referencia, " +                                "@IdTipoCliente,@IdTipoDocumento, @NumeroDocumento, @Estado)";
+                                "NumeroDocumento, Estado)" +
+                          "VALUES(@Nombres, @Apellidos, @Direccion, @Referencia, " +
+                                "@IdTipoCliente,@IdTipoDocumento, @NumeroDocumento, @Estado)";
                 using (var comando = new SqlCommand(sql,conexion))
                 {
                     comando.Parameters.AddWithValue("@Nombres", cliente.Nombres);
@@ -107,7 +109,10 @@ namespace Financiera.Data
             using (var conexion = new SqlConnection(cadenaconexion))
             {
                 conexion.Open();
-                var sql = "UPDATE Cliente SET Nombres = @Nombres, Apellidos = @Apellidos, " +                    "Direccion = @Direccion, Referencia = @Referencia, " +                    "IdTipoCliente = @IdTipoCliente, IdTipoDocumento = @IdTipoDocumento, " +                    "NumeroDocumento = @NumeroDocumento, Estado = @Estado " +
+                var sql = "UPDATE Cliente SET Nombres = @Nombres, Apellidos = @Apellidos, " +
+                    "Direccion = @Direccion, Referencia = @Referencia, " +
+                    "IdTipoCliente = @IdTipoCliente, IdTipoDocumento = @IdTipoDocumento, " +
+                    "NumeroDocumento = @NumeroDocumento, Estado = @Estado " +
                     "WHERE ID = @ID";
                 using (var comando = new SqlCommand(sql, conexion))
                 {
