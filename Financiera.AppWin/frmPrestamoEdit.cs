@@ -36,18 +36,20 @@ namespace Financiera.AppWin
             {
                 MessageBox.Show("El prestamo ha sido registrado", "Financiera", 
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
+                this.DialogResult = DialogResult.OK;
             }
             else
             {
                 MessageBox.Show("No se ha podido completar la operacion", "Financiera",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            this.DialogResult = DialogResult.OK;
         }
 
         private void iniciarFormulario(object sender, EventArgs e)
         {
             cargarDatos();
+            llDetalle.Visible = prestamo.ID > 0;
+            btnGrabar.Enabled = prestamo.ID == 0;
         }
 
         private void cargarDatos()
@@ -69,6 +71,12 @@ namespace Financiera.AppWin
             prestamo.Importe = decimal.Parse(txtImporte.Text);
             prestamo.tasa = decimal.Parse(txtTaza.Text);
             prestamo.Plazo = int.Parse(txtPlazo.Text);
+        }
+
+        private void verDetalles(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            var frm = new frmCuotas();
+            frm.ShowDialog();
         }
     }
 }
