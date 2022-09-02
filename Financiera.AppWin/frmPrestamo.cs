@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Financiera.Dominio;
 
 namespace Financiera.AppWin
 {
@@ -19,7 +20,8 @@ namespace Financiera.AppWin
 
         private void nuevoRegistro(object sender, EventArgs e)
         {
-            var frm = new frmPrestamoEdit();
+            var prestamo = new Prestamo();
+            var frm = new frmPrestamoEdit(prestamo);
             if (frm.ShowDialog() == DialogResult.OK)
             {
 

@@ -8,18 +8,40 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Financiera.Logic;
+using Financiera.Dominio;
 
 namespace Financiera.AppWin
 {
     public partial class frmPrestamoEdit : Form
     {
-        public frmPrestamoEdit()
+        Prestamo prestamo;
+        public frmPrestamoEdit(Prestamo prestamo)
         {
+            this.prestamo = prestamo;
             InitializeComponent();
         }
 
         private void grabarRegistro(object sender, EventArgs e)
         {
+            asignarObjeto();
+            var exito = false;
+            if(prestamo.ID == 0)
+            {
+                exito = PrestamoBL.Insertar(prestamo);
+            } else
+            {
+                exito = PrestamoBL.Actualizar(prestamo);
+            }
+            if (exito)
+            {
+                MessageBox.Show("El prestamo ha sido registrado", "Financiera", 
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                MessageBox.Show("No se ha podido completar la operacion", "Financiera",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
             this.DialogResult = DialogResult.OK;
         }
 
@@ -30,9 +52,23 @@ namespace Financiera.AppWin
 
         private void cargarDatos()
         {
-            cboCliente.DataSource = ClienteBL.Listar();
+            var listado = ClienteBL.Listar();
+            listado.Insert(0, new Cliente
+            {
+                Nombres = "--SELECCIONE--"
+            });
+            cboCliente.DataSource = listado;
             cboCliente.DisplayMember = "NombreCompleto";
             cboCliente.ValueMember = "ID";
+        }
+
+        private void asignarObjeto()
+        {
+            prestamo.IdCliente = int.Parse(cboCliente.SelectedValue.ToString());
+            prestamo.FechaDeposito = dpFechaDeposito.Value;
+            prestamo.Importe = decimal.Parse(txtImporte.Text);
+            prestamo.tasa = decimal.Parse(txtTaza.Text);
+            prestamo.Plazo = int.Parse(txtPlazo.Text);
         }
     }
 }

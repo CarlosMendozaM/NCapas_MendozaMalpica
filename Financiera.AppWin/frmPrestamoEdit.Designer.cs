@@ -35,21 +35,15 @@
             this.label3 = new System.Windows.Forms.Label();
             this.cboCliente = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.dpFechaDeposito = new System.Windows.Forms.DateTimePicker();
             this.txtImporte = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.txtPlazo = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtTaza = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.dgvDetalle = new System.Windows.Forms.DataGridView();
-            this.btnCalcular = new System.Windows.Forms.Button();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnGrabar = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvDetalle)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -110,13 +104,13 @@
             this.label4.TabIndex = 6;
             this.label4.Text = "Fecha deposito:";
             // 
-            // dateTimePicker1
+            // dpFechaDeposito
             // 
-            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePicker1.Location = new System.Drawing.Point(401, 37);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(193, 20);
-            this.dateTimePicker1.TabIndex = 7;
+            this.dpFechaDeposito.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dpFechaDeposito.Location = new System.Drawing.Point(401, 37);
+            this.dpFechaDeposito.Name = "dpFechaDeposito";
+            this.dpFechaDeposito.Size = new System.Drawing.Size(193, 20);
+            this.dpFechaDeposito.TabIndex = 7;
             // 
             // txtImporte
             // 
@@ -150,12 +144,12 @@
             this.label7.TabIndex = 12;
             this.label7.Text = "Tiempo de prestamo(mensual):";
             // 
-            // textBox1
+            // txtTaza
             // 
-            this.textBox1.Location = new System.Drawing.Point(380, 63);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(88, 20);
-            this.textBox1.TabIndex = 15;
+            this.txtTaza.Location = new System.Drawing.Point(380, 63);
+            this.txtTaza.Name = "txtTaza";
+            this.txtTaza.Size = new System.Drawing.Size(88, 20);
+            this.txtTaza.TabIndex = 15;
             // 
             // label6
             // 
@@ -166,56 +160,9 @@
             this.label6.TabIndex = 14;
             this.label6.Text = "Taza de Interes(mensual):";
             // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(22, 144);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(94, 13);
-            this.label8.TabIndex = 16;
-            this.label8.Text = "Detalle de Cuotas:";
-            // 
-            // dgvDetalle
-            // 
-            this.dgvDetalle.AllowUserToAddRows = false;
-            this.dgvDetalle.AllowUserToDeleteRows = false;
-            this.dgvDetalle.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvDetalle.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Column1,
-            this.Column2});
-            this.dgvDetalle.Location = new System.Drawing.Point(27, 160);
-            this.dgvDetalle.Name = "dgvDetalle";
-            this.dgvDetalle.ReadOnly = true;
-            this.dgvDetalle.RowHeadersVisible = false;
-            this.dgvDetalle.Size = new System.Drawing.Size(602, 241);
-            this.dgvDetalle.TabIndex = 17;
-            // 
-            // btnCalcular
-            // 
-            this.btnCalcular.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCalcular.Location = new System.Drawing.Point(298, 95);
-            this.btnCalcular.Name = "btnCalcular";
-            this.btnCalcular.Size = new System.Drawing.Size(111, 23);
-            this.btnCalcular.TabIndex = 18;
-            this.btnCalcular.Text = "Calcular Cuotas";
-            this.btnCalcular.UseVisualStyleBackColor = true;
-            // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "N°";
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
-            this.Column1.Width = 60;
-            // 
-            // Column2
-            // 
-            this.Column2.HeaderText = "Importe";
-            this.Column2.Name = "Column2";
-            this.Column2.ReadOnly = true;
-            // 
             // btnGrabar
             // 
-            this.btnGrabar.Location = new System.Drawing.Point(537, 412);
+            this.btnGrabar.Location = new System.Drawing.Point(443, 150);
             this.btnGrabar.Name = "btnGrabar";
             this.btnGrabar.Size = new System.Drawing.Size(75, 23);
             this.btnGrabar.TabIndex = 19;
@@ -226,7 +173,7 @@
             // btnCancelar
             // 
             this.btnCancelar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancelar.Location = new System.Drawing.Point(436, 412);
+            this.btnCancelar.Location = new System.Drawing.Point(342, 150);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(75, 23);
             this.btnCancelar.TabIndex = 20;
@@ -237,19 +184,16 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(639, 447);
+            this.ClientSize = new System.Drawing.Size(639, 193);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnGrabar);
-            this.Controls.Add(this.btnCalcular);
-            this.Controls.Add(this.dgvDetalle);
-            this.Controls.Add(this.label8);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtTaza);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.txtPlazo);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.txtImporte);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.dateTimePicker1);
+            this.Controls.Add(this.dpFechaDeposito);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.cboCliente);
             this.Controls.Add(this.label3);
@@ -261,7 +205,6 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Prestamo";
             this.Load += new System.EventHandler(this.iniciarFormulario);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvDetalle)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -276,18 +219,13 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ComboBox cboCliente;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.DateTimePicker dpFechaDeposito;
         private System.Windows.Forms.TextBox txtImporte;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox txtPlazo;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtTaza;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.DataGridView dgvDetalle;
-        private System.Windows.Forms.Button btnCalcular;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.Button btnGrabar;
         private System.Windows.Forms.Button btnCancelar;
     }
